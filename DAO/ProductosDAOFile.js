@@ -61,5 +61,5 @@ class ProductoFileDAO extends IProductosDAO {
     }
 }
 
-module.exports = ProductoMongoDAO
+module.exports = ProductoFileDAO
 

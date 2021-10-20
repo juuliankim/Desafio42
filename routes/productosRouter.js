@@ -8,6 +8,7 @@ const { schema } = require('../models/productosGraphQL').schema
 const SingletonFactory = require('../factory')
 let singletonFactory = SingletonFactory.getInstancia()
 let instanciaFactory = singletonFactory.getPersistencia('mysql')
+const env = require('../config/config')
 
 const loggerError = log4js.getLogger('error')
 
@@ -103,7 +104,7 @@ var root = {
 router.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: root,
-    graphql: true
+    graphql: env.GRAPHIQL
 }))
 
 module.exports = router

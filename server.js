@@ -17,6 +17,7 @@ const numCPUs = require('os').cpus().length
 const compression = require('compression')
 const Sms = require('./mensajeria/sms')
 const log4js = require("log4js")
+const env = require('./config/config')
 
 const loggerConsola = log4js.getLogger('consola')
 const loggerWarn = log4js.getLogger('warn')
@@ -130,7 +131,7 @@ io.on('connection', async socket => {
     })
 })
 
-let PORT = process.env.PORT || 0
+let PORT = env.PORT
 if (process.argv[2] && !isNaN(process.argv[2])) {
     PORT = process.argv[2]
 } else if (isNaN(process.argv[2])) {
