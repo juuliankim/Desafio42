@@ -7,7 +7,7 @@ const loggerConsola = log4js.getLogger('consola')
 const loggerWarn = log4js.getLogger('warn')
 const loggerError = log4js.getLogger('error')
 
-app.get('/info', (req, res) => {
+router.get('/info', (req, res) => {
     let informacion = {}
     informacion['Argumentos de entrada:'] = `${process.argv[2]} ${process.argv[3]} ${process.argv[4]} ${process.argv[5]}`
     informacion['Nombre de plataforma:'] = process.platform
@@ -21,7 +21,7 @@ app.get('/info', (req, res) => {
     res.send(JSON.stringify(informacion, null, 4))
 })
 
-app.get('/random', (req, res) => {
+router.get('/random', (req, res) => {
     const numeroRandom = fork('./api/numeroRandom.js')
     let cantidad = 0
     if (req.query.cant & !isNaN(req.query.cant)) {

@@ -18,6 +18,7 @@ const compression = require('compression')
 const Sms = require('./mensajeria/sms')
 const log4js = require("log4js")
 const env = require('./config/config')
+const passport = require("passport")
 
 const loggerConsola = log4js.getLogger('consola')
 const loggerWarn = log4js.getLogger('warn')
@@ -74,14 +75,15 @@ app.engine('hbs', handlebars({
 app.set("view engine", "hbs")
 app.set("views", "./views")
 
-app.use('/api', productosRouter)
-app.use('/api', mensajesRouter)
-app.use('/api', usersRouter)
-app.use('/api', infoRouter)
 const productosRouter = require('./routes/productosRouter')
 const mensajesRouter = require('./routes/mensajesRouter')
 const usersRouter = require('./routes/usersRouter')
 const infoRouter = require('./routes/infoRouter')
+
+app.use('/api', productosRouter)
+app.use('/api', mensajesRouter)
+app.use('/api', usersRouter)
+app.use('/api', infoRouter)
 
 app.use((err, req, res, next) =>{
     console.error(err.message)

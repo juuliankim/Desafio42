@@ -1,9 +1,10 @@
 const dotenv = require('dotenv')
 dotenv.config()
-const client = require('twilio')(accountSid, authToken)
 
-let accountSid = process.env.SMS_SID
-let authToken = process.env.SMS_TOKEN
+let accountSid = process.env.SMS_SID || 'ACee4b3a7272396e74ad07bbf6d8317aa2'
+let authToken = process.env.SMS_TOKEN || '0466654b4a06c0194df8659257abd949'
+
+const client = require('twilio')(accountSid, authToken)
 
 class Sms {
     constructor() { }
